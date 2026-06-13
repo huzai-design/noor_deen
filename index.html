@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Islamic Daily Routine Tracker</title>
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:
+radial-gradient(circle at top, rgba(34,197,94,0.15), transparent 40%),
+radial-gradient(circle at bottom, rgba(59,130,246,0.12), transparent 40%),
+linear-gradient(135deg,#020617,#0b1220,#0f172a);
+min-height:100vh;
+padding:20px;
+color:white;
+}
+
+/* HEADER */
+.header{
+background:rgba(255,255,255,.05);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.1);
+padding:30px;
+border-radius:25px;
+text-align:center;
+margin-bottom:25px;
+box-shadow:0 10px 40px rgba(0,0,0,.4);
+}
+
+.header h1{font-size:38px;}
+.header p{color:#cbd5e1;margin-top:6px;}
+
+/* GRID */
+.container{
+max-width:1200px;
+margin:auto;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:18px;
+}
+
+@media(max-width:900px){
+.container{grid-template-columns:1fr;}
+}
+
+/* CARD */
+.card{
+background:rgba(255,255,255,.04);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.08);
+border-radius:20px;
+padding:18px;
+box-shadow:0 10px 30px rgba(0,0,0,.35);
+transition:.2s;
+}
+
+.card:hover{
+transform:translateY(-2px);
+}
+
+.card h2{
+font-size:18px;
+margin-bottom:12px;
+color:#e2e8f0;
+}
+
+/* LIST */
+ul{list-style:none;}
+
+li{
+display:flex;
+align-items:center;
+gap:10px;
+margin:7px 0;
+color:#cbd5e1;
+}
+
+input[type="checkbox"]{
+transform:scale(1.1);
+accent-color:#22c55e;
+}
+
+/* STORIES GRID */
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+gap:10px;
+}
+
+.subcard{
+background:rgba(255,255,255,.06);
+padding:10px;
+border-radius:12px;
+text-decoration:none;
+color:white;
+display:block;
+text-align:center;
+transition:.2s;
+border:1px solid rgba(255,255,255,.08);
+cursor:pointer;
+font-size:14px;
+}
+
+.subcard:hover{
+background:rgba(34,197,94,.15);
+transform:scale(1.05);
+border-color:#22c55e;
+}
+
+/* BUTTONS */
+button{
+margin-top:10px;
+padding:10px;
+width:100%;
+border:none;
+border-radius:12px;
+cursor:pointer;
+font-weight:600;
+transition:.2s;
+}
+
+button:hover{
+transform:scale(1.02);
+}
+
+.smallBtn{
+background:linear-gradient(90deg,#22c55e,#16a34a);
+color:white;
+}
+
+.toggleBtn{
+background:linear-gradient(90deg,#2563eb,#1d4ed8);
+color:white;
+}
+
+/* ADD BOX */
+.addBox{
+display:flex;
+gap:8px;
+margin-top:10px;
+}
+
+.addBox input{
+flex:1;
+padding:10px;
+border-radius:10px;
+border:none;
+outline:none;
+background:rgba(255,255,255,.08);
+color:white;
+}
+
+/* AYAH HADITH */
+.duo{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.duo div{
+background:rgba(255,255,255,.05);
+padding:18px;
+border-radius:15px;
+border:1px solid rgba(255,255,255,.08);
+}
+
+/* POPUP */
+.popup{
+position:fixed;
+top:0;left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.7);
+display:none;
+justify-content:center;
+align-items:center;
+}
+
+.popupBox{
+background:#0f172a;
+padding:22px;
+border-radius:15px;
+text-align:center;
+width:260px;
+border:1px solid rgba(255,255,255,.1);
+}
+
+.deleteBtn{
+background:#ef4444;
+color:white;
+margin-top:10px;
+}
+
+.cancelBtn{
+background:#64748b;
+color:white;
+margin-top:10px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="header">
+<h1>🌙 Islamic Daily Routine Tracker</h1>
+<p>Quran • Hadith • Dhikr • Daily Deen</p>
+</div>
+
+<div class="container">
+
+<!-- PRAYERS -->
+<div class="card"><h2>🌌 Fajr</h2><ul><li><input type="checkbox">Wake up dua</li><li><input type="checkbox">Tahajjud</li><li><input type="checkbox">Fajr prayer</li><li><input type="checkbox">Morning dhikr</li></ul></div>
+
+<div class="card"><h2>☀️ Dhuhr</h2><ul><li><input type="checkbox">Dhuhr prayer</li><li><input type="checkbox">Quran reading</li><li><input type="checkbox">Rest</li></ul></div>
+
+<div class="card"><h2>🌤 Asr</h2><ul><li><input type="checkbox">Asr prayer</li><li><input type="checkbox">Family help</li><li><input type="checkbox">Dhikr</li></ul></div>
+
+<div class="card"><h2>🌇 Maghrib</h2><ul><li><input type="checkbox">Maghrib prayer</li><li><input type="checkbox">Evening dhikr</li><li><input type="checkbox">Family time</li></ul></div>
+
+<div class="card"><h2>🌙 Isha</h2><ul><li><input type="checkbox">Isha prayer</li><li><input type="checkbox">Witr</li></ul></div>
+
+<div class="card"><h2>🛌 Sleep</h2><ul><li><input type="checkbox">Sleep early</li><li><input type="checkbox">Night dua</li></ul></div>
+
+<!-- STORIES -->
+<div class="card">
+<h2>📖 Islamic Stories</h2>
+
+<div class="grid" id="storyGrid"></div>
+
+<button class="toggleBtn" onclick="toggleStories()" id="toggleBtn">
+🔁 More / Less Stories
+</button>
+
+<div class="addBox">
+<input id="name" placeholder="Story name">
+<input id="link" placeholder="Story link">
+<button class="smallBtn" onclick="addStory()">Add</button>
+</div>
+</div>
+
+<!-- AYAH HADITH -->
+<div class="card">
+<h2>📖 Ayah & Hadith (Daily)</h2>
+
+<div class="duo">
+<div>
+<b style="color:#93c5fd;">Ayah</b>
+<p id="ayah"></p>
+</div>
+
+<div>
+<b style="color:#38bdf8;">Hadith</b>
+<p id="hadith"></p>
+</div>
+</div>
+
+</div>
+
+</div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+<div class="popupBox">
+<p>Delete this story?</p>
+<button class="deleteBtn" onclick="deleteStory(event)">Delete</button>
+<button class="cancelBtn" onclick="closePopup(event)">Cancel</button>
+</div>
+</div>
+
+<script>
+
+let selected = null;
+let showMore = false;
+
+/* STORIES */
+const lessStories = [
+["Adam (AS)","https://www.youtube.com/results?search_query=Adam(A.S)+Story"],
+["Nuh (AS)","https://www.youtube.com/results?search_query=Nuh(A.S)+Story"],
+["Ibrahim (AS)","https://www.youtube.com/results?search_query=Ibrahim(A.S)+Story"],
+["Yusuf (AS)","https://www.youtube.com/results?search_query=Yusuf(A.S)+Story"],
+["Isa (AS)","https://www.youtube.com/results?search_query=Isa(A.S)+Story"],
+["Muhammad ﷺ","https://www.youtube.com/results?search_query=Muhammed(S.A.W)+Story"]
+];
+
+const moreStories = [
+["Musa (AS)","https://www.youtube.com/results?search_query=Musa(A.S)+Story"],
+["Sahaba","https://www.youtube.com/results?search_query=sahaba+stories"],
+["Bilal (RA)","https://www.youtube.com/results?search_query=Bilal+(R.A)+Story"],
+["Umar (RA)","https://www.youtube.com/results?search_query=Umar+(R.A)+Story"],
+["Khalid ibn Walid (RA)","https://www.youtube.com/results?search_query=Khalid+ibn+Walid+(R.A)+Story"]
+];
+
+/* LOAD ALL STORIES (IMPORTANT FIX) */
+function loadStories() {
+
+let box = document.getElementById("storyGrid");
+box.innerHTML = "";
+
+/* 1. built-in stories */
+let list = showMore
+? [...lessStories, ...moreStories]
+: lessStories;
+
+list.forEach(s => {
+let a = document.createElement("a");
+a.className = "subcard";
+a.innerText = s[0];
+a.href = s[1];
+a.target = "_blank";
+box.appendChild(a);
+});
+
+/* 2. custom saved stories (IMPORTANT FIX) */
+let saved = JSON.parse(localStorage.getItem("stories") || "[]");
+
+saved.forEach(story => {
+let a = document.createElement("a");
+a.className = "subcard";
+a.innerText = story.name;
+a.href = story.link;
+a.target = "_blank";
+
+/* right click delete */
+a.oncontextmenu = function(e){
+e.preventDefault();
+selected = story;
+document.getElementById("popup").style.display = "flex";
+};
+
+box.appendChild(a);
+});
+
+}
+
+/* TOGGLE */
+function toggleStories() {
+showMore = !showMore;
+
+document.getElementById("toggleBtn").innerText =
+showMore ? "🔽 Less Stories" : "🔁 More Stories";
+
+loadStories();
+}
+
+/* DAILY AYAH HADITH */
+const ayahList = [
+"Indeed, with hardship comes ease.",
+"Allah does not burden a soul beyond what it can bear.",
+"So remember Me; I will remember you.",
+"Call upon Me; I will respond to you.",
+"Do not despair of Allah’s mercy.",
+"Allah is with the patient.",
+"Allah is Forgiving and Merciful.",
+"Verily, after hardship comes ease."
+];
+
+const hadithList = [
+"Actions are judged by intentions.",
+"Smiling is charity.",
+"Cleanliness is half of faith.",
+"The best deeds are consistent even if small.",
+"Allah loves gentleness.",
+"Speak good or remain silent."
+];
+
+let day = new Date().getDate();
+
+document.getElementById("ayah").innerText =
+ayahList[day % ayahList.length];
+
+document.getElementById("hadith").innerText =
+hadithList[day % hadithList.length];
+
+/* INIT */
+window.onload = function () {
+loadStories();
+};
+
+/* ADD STORY */
+function addStory() {
+
+let name = document.getElementById("name").value;
+let link = document.getElementById("link").value;
+if (!name || !link) return;
+
+let saved = JSON.parse(localStorage.getItem("stories") || "[]");
+saved.push({ name, link });
+
+localStorage.setItem("stories", JSON.stringify(saved));
+
+document.getElementById("name").value = "";
+document.getElementById("link").value = "";
+
+loadStories();
+}
+
+/* DELETE STORY */
+function deleteStory() {
+
+let saved = JSON.parse(localStorage.getItem("stories") || "[]");
+saved = saved.filter(s => s.name !== selected.name);
+
+localStorage.setItem("stories", JSON.stringify(saved));
+
+closePopup();
+loadStories();
+}
+
+/* POPUP */
+function closePopup() {
+document.getElementById("popup").style.display = "none";
+selected = null;
+}
+
+document.addEventListener("touchstart", function(){}, {passive:true});
+
+</script>
+
+</body>
+</html>
